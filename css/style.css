@@ -70,7 +70,7 @@ button{
 .display-container {
     position: relative;
     background-color: #fff;
-    width: 84%;
+    width: 100%;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: column;
@@ -118,13 +118,15 @@ button{
     text-decoration: none;
 }
 /* media queries */
+@media(min-width:420px){
+    .display{
+        min-width: 300px;
+    }
+}
 @media(min-width:576px){
     .header-form{
         width: 60%;
     }
-    .display{
-        min-width: 300px;
-    } 
 }
 @media(min-width:768px){ 
     .header-form{
