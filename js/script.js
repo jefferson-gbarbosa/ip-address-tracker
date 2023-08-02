@@ -6,6 +6,9 @@ const ipValue = document.querySelector('#ipValue');
 const locationValue = document.querySelector('#locationValue');
 const timeValue = document.querySelector('#timeValue');
 const ispValue = document.querySelector('#ispValue');
+const modalError = document.querySelector('#modal-error');
+const errorTxt = document.querySelector('#error-txt');
+const closeBtn = document.querySelector('#close-btn');
 
 let lon;
 let lat;
@@ -73,7 +76,8 @@ searchBtn.addEventListener('click',async(e) => {
     if(ipInput.value.match(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/,)) {
         showIpData(ipInput.value);
     }else{
-        alert('You have entered an invalid IP address!')
+        // alert('You have entered an invalid IP address!')
+        errorModal();
         return false
     } 
 })
@@ -82,6 +86,19 @@ ipInput.addEventListener("keyup", (e) => {
     if (e.code === "Enter") {
       showIpData(ipInput.value);
     }
-  });
+});
 
+const errorModal = ()=>{
+    modalError.style.display = 'block';
+    errorTxt.textContent = 'You have entered an invalid IP address!'
+}
 
+closeBtn.addEventListener('click', () => {
+    modalError.style.display = 'none';
+});
+
+window.addEventListener('click', (e) => {
+    if (e.target === modalError) {
+        modalError.style.display = 'none';
+    }
+});
